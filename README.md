@@ -6,10 +6,9 @@ If you've ever wondered why your complications aren't updating, this project sho
 
 The approach is simple: the complication displays the time it was created for and its position in the timeline. If you see "12:00 PM, ENTRY 3" you know that it's the third entry in the timeline and has data that's current at noon. When "CURRENT" is displayed, the complication has just been generated. "TEMPLATE" is displayed when the complication is previewed in the complication picker.
 
-<figure>
-	<img src="Screenshot.png" alt="Screenshot of complication with time and entry number displayed]">
-	<figcaption style="font-style: italic; font-size: 0.5em; margin-bottom: 1em;">The complication showing the first timeline entry for 3:58 PM</figcaption>
-</figure>
+![Screenshot of complication with time and entry number displayed](Screenshot.png)
+
+_The complication showing the first timeline entry for 3:58 PM_
 
 When the complications are refreshed, this sample code distributes the timeline entries over several spans of time. The first 10 entries are a minute apart, the next 20 are at 5 minute intervals, followed by 40 at 15 minute intervals, and finally 30 at a 1 hour interval. This gives you 100 timeline entries that will provide information for about a day and a half. This complication refresh is scheduled as a background task that repeats every hour.
 
