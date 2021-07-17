@@ -8,7 +8,7 @@ The approach is simple: the complication displays the time it was created for an
 
 <figure>
 	<img src="Screenshot.png" alt="Screenshot of complication with time and entry number displayed]">
-	<figcaption>The complication showing the first timeline entry for 3:58 PM</figcaption>
+	<figcaption style="font-style: italic; font-size: 0.5em; margin-bottom: 1em;">The complication showing the first timeline entry for 3:58 PM</figcaption>
 </figure>
 
 When the complications are refreshed, this sample code distributes the timeline entries over several spans of time. The first 10 entries are a minute apart, the next 20 are at 5 minute intervals, followed by 40 at 15 minute intervals, and finally 30 at a 1 hour interval. This gives you 100 timeline entries that will provide information for about a day and a half. This complication refresh is scheduled as a background task that repeats every hour.
