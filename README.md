@@ -16,7 +16,7 @@ This covers a worst-case scenario: you're likely to see the complication display
 
 The sample also shows how you can support multiple complications in a single watchOS app. The first complication has a ring around the data, the second one does not. Note that only the Graphic Circular complication is supported, but it should be clear how and where to introduce support for other complication styles.
 
-This project was created using the standard watchOS standalone template in Xcode 12. The classes and comments from Apple are left in place. My comments are preceded with "NOTE:". Also note that debugLog() is used to show when complications are refreshed. My code changes are in the following files:
+This project was created using the standard watchOS standalone template in Xcode 12. The classes and comments from Apple are left in place. My comments are preceded with "NOTE:". Also note that `debugLog()` is used to show when complications are refreshed. My code changes are in the following files:
 
 * `ComplicationRefresh.swift` - `ExtensionDelegate` and `ComplicationController` extensions used to schedule and generate complication timeline entries.
 * `ComplicationRendering.swift` - A `ComplicationController` extension to draw the complication's information.
