@@ -21,12 +21,14 @@ class InterfaceController: WKInterfaceController {
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
-		
-//		reloadComplications()
     }
 
 	@IBAction func reloadComplications() {
 		debugLog()
+		
+		// NOTE: If needed, you can force all complications to reload immediately. You won't want
+		// to expose this functionality in a shipping app, but it can be helpful to see any
+		// complications immediately instead of waiting for the timeline entries to refresh.
 		
 		let complicationServer = CLKComplicationServer.sharedInstance()
 		if let activeComplications = complicationServer.activeComplications {

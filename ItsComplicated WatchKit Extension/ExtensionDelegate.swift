@@ -13,9 +13,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 	
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-		
-//		reloadComplications()
-//		scheduleRefresh(immediate: true)
     }
 
     func applicationDidBecomeActive() {
@@ -28,6 +25,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
 	func applicationDidEnterBackground() {
+		
+		// NOTE: After the app has launched and is going back into the background, we schedule a refresh that will happen
+		// as soon as possible. This lets watchOS know that we need to refresh the complications.
+		
 		if needsImmediateRefresh {
 			scheduleRefresh(immediate: true)
 			
@@ -43,6 +44,14 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             // Use a switch statement to check the task type
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
+				
+				// NOTE: When a refresh background task occurs, all of the complications are reloaded. This, in turn,
+				// causes the complication timeline entries (and their associated template images) to be reloaded. The
+				// complication images are created in ComplicationRendering.swift and called by complicationTimelineEntry()
+				// when watchOS requests new timeline entries with getTimelineEntries() in the ComplicationController.
+				//
+				// After the complications are reloaded, this same task is scheduled an hour from now.
+				
 				reloadComplications()
 				scheduleRefresh()
 

@@ -76,7 +76,6 @@ extension WKInterfaceDevice {
 			return nil
 		}
 	}
-
 	
 	func extraLargeSize() -> CGSize? { // in points
 		switch watchCase() {

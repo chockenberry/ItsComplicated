@@ -43,12 +43,9 @@ extension ComplicationController {
 				string = "CURRENT"
 			}
 			else {
-				string = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short) + "\nENTRY " + String(index)
+				string = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short) + "\nENTRY " + String(index + 1)
 			}
 			
-			// use NSStringDrawingContext to scale text?
-			//let context = NSStringDrawingContext()
-			//context.minimumScaleFactor = 0.5
 			let context: NSStringDrawingContext? = nil
 			let computeSize = CGSize(width: rect.size.width, height: rect.size.height)
 			let boundingRect = string.boundingRect(with: computeSize, options: .usesLineFragmentOrigin, attributes: attributes, context: context)
@@ -66,7 +63,9 @@ extension ComplicationController {
 		let foregroundColor = UIColor.white
 		let backgroundColor = UIColor.orange
 
-		// there are 100 timeline entries, so scale alpha by that amount
+		// NOTE: There are 100 timeline entries, so the complication's alpha is scaled by that amount. The effect makes
+		// the complication "darker" as time passes.
+		
 		let alpha = CGFloat(index) / 100.0
 		backgroundColor.withAlphaComponent(alpha).set()
 		
