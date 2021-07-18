@@ -14,9 +14,9 @@ When the complications are refreshed, this sample code distributes the timeline 
 
 This covers a worst-case scenario: you're likely to see the complication display a time that's never more than 5 minutes from the current time.
 
-The sample also shows how you can support multiple complications in a single watchOS app. The first complication has a ring around the data, the second one does not. When you tap on of the complication variations, a child `InterfaceController` for the complication is displayed.
+The sample also shows how you can support multiple complications in a single watchOS app. The first complication has a ring around the data, the second one does not. When you tap on one of the complication variations, a child `InterfaceController` for the complication is displayed using the root controller. See `handleUserActivity()` in the `ExtensionDelegate` to see how user activities are used to make this happen.
 
-Note that only the Graphic Circular complication is supported, but it should be clear how and where to introduce support for other complication styles.
+Note that only the Graphic Circular complication is supported, but it should be clear how and where to introduce support for [other complication families](https://developer.apple.com/design/human-interface-guidelines/watchos/overview/complications/).
 
 This project was created using the standard watchOS standalone template in Xcode 12. The classes and comments from Apple are left in place. My comments are preceded with "NOTE:". Also note that `debugLog()` is used to show when complications are refreshed. My code changes are in the following files:
 
