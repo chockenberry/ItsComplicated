@@ -39,4 +39,15 @@ class InterfaceController: WKInterfaceController {
 		}
 
 	}
+	
+	func showComplication(identifier: String) {
+		popToRootController()
+		if (identifier == ComplicationController.complicationOne) {
+			pushController(withName: "complicationOne", context: nil)
+		}
+		else {
+			pushController(withName: "complicationTwo", context: nil)
+		}
+	}
+	
 }

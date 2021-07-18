@@ -11,8 +11,8 @@ import ClockKit
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
 	// NOTE: This app supports two complications that are identified using these strings:
-	let complicationOne = "complication1"
-	let complicationTwo = "complication2"
+	static let complicationOne = "complication1"
+	static let complicationTwo = "complication2"
 
     // MARK: - Complication Configuration
 
@@ -22,8 +22,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 			// NOTE: The displayName is shown in the complication picker along with the template image generated in
 			// getLocalizableSampleTemplate().
             
-			CLKComplicationDescriptor(identifier: complicationOne, displayName: "It’s Complicated One", supportedFamilies: [CLKComplicationFamily.graphicCircular]),
-			CLKComplicationDescriptor(identifier: complicationTwo, displayName: "It’s Complicated Two", supportedFamilies: [CLKComplicationFamily.graphicCircular])
+			CLKComplicationDescriptor(identifier: ComplicationController.complicationOne, displayName: "It’s Complicated One", supportedFamilies: [CLKComplicationFamily.graphicCircular]),
+			CLKComplicationDescriptor(identifier: ComplicationController.complicationTwo, displayName: "It’s Complicated Two", supportedFamilies: [CLKComplicationFamily.graphicCircular])
            
 			// Multiple complication support can be added here with more descriptors
         ]
@@ -34,6 +34,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func handleSharedComplicationDescriptors(_ complicationDescriptors: [CLKComplicationDescriptor]) {
         // Do any necessary work to support these newly shared complication descriptors
+		
+		debugLog("complicationDescriptors = \(complicationDescriptors)")
     }
 
     // MARK: - Timeline Configuration
@@ -76,7 +78,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 		var template: CLKComplicationTemplate?
 		
 		// NOTE: The variation between the two complications isn't very interesting - the first one has a ring, the other does not.
-		let variation = (complication.identifier == complicationOne ? 1 : 2)
+		let variation = (complication.identifier == ComplicationController.complicationOne ? 1 : 2)
 
 		switch complication.family {
 		case .graphicCircular:

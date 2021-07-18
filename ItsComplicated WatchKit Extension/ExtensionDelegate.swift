@@ -7,6 +7,8 @@
 
 import WatchKit
 
+import ClockKit
+
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
 	var needsImmediateRefresh = true
@@ -83,4 +85,19 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
+	// NOTE: A tap on a complication generates a NSUserActivity. The userInfo in that activity contains the
+	// identifier of the complication, which we pass off to the root InterfaceController which pushes a
+	// child view controller specific to the complication variation.
+	//
+	// https://crunchybagel.com/how-to-detect-if-your-apple-watch-app-was-launched-from-a-complication-2/
+	
+	func handleUserActivity(_ userInfo: [AnyHashable : Any]?) {
+		if let complicationIdentifier = userInfo?[CLKLaunchedComplicationIdentifierKey] as? String {
+			debugLog("complicationIdentifier = \(complicationIdentifier)")
+			if let rootInterfaceController = WKExtension.shared().rootInterfaceController as? InterfaceController {
+				rootInterfaceController.showComplication(identifier: complicationIdentifier)
+			}
+		}
+	}
+	
 }

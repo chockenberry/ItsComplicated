@@ -91,7 +91,7 @@ extension ComplicationController {
 
 		debugLog("timeline: entry for date = \(date), complication.family = \(complication.family.rawValue)")
 
-		let variation = (complication.identifier == complicationOne ? 1 : 2) // NOTE: yeah, this should be an enum
+		let variation = (complication.identifier == ComplicationController.complicationOne ? 1 : 2) // NOTE: yeah, this should be an enum
 
 		switch complication.family {
 		case .graphicCircular:
